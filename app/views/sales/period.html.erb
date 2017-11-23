@@ -1,0 +1,26 @@
+<form action="https://ccore.spgateway.com/MPG/period" method="post">
+  <table>
+    <caption>信用卡-定期定額 API</caption>
+    <% @client_options.each do |k, v| %>
+      <tr>
+        <th class="title"><%= k %></th>
+        <td><%= v %></td>
+      </tr>
+    <% end %>
+    <% @params.each do |k, v| %>
+      <tr>
+        <th class="title"><%= k %></th>
+        <td>
+          <%= v %>
+        </td>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan="2">
+        <input type="hidden" name='MerID_' value="MS32129014">
+        <input type="hidden" name="PostData_" value="<%= @encrypt_params %>">
+        <input type="submit">
+      </td>
+    </tr>
+  </table>
+</form>

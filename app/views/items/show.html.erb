@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @item.name %>
+</p>
+
+ <%= form_for(@item, url: checkout_item_path(@item), method: :patch) do |f| %>
+   <div id="payment-form"></div>
+   <%= f.submit "確認付款", class:"btn btn-default btn-danger" %>
+ <% end %>
+
+ <script src="https://js.braintreegateway.com/js/braintree-2.30.0.min.js"></script>
+ <script>
+ var clientToken = "<%= @client_token %>";
+
+ braintree.setup(clientToken, "dropin", {
+   container: "payment-form"
+ });
+ </script>
+
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>
